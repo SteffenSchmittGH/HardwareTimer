@@ -1,7 +1,0 @@
-C:\Users\schmi\OneDrive\Dokumente\PSoC Creator\LAB1_AMA\Design01.cydsn\Design01.cyprj|292f6f37-e7cb-4b6e-b740-c8b7768964b4
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2e836ecf-153d-49d6-bb25-1a8753df00b4
-C:\Users\schmi\OneDrive\Dokumente\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|78122f4b-b0a5-4ba4-8bb5-1a074073a2df
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0f0549bd-a769-462c-b606-197293981480
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9715d9f9-277e-47ba-9071-22662623d1d4
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|aa746860-32c1-43e7-ac69-06fd1da9b33b
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3\AnalogDevice\PSoC35AnalogDevice.cylib\PSoC35AnalogDevice.cyprj|273c0f32-091e-4040-8ce0-06cda1e644ea
