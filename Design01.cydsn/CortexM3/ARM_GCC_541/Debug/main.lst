@@ -1,0 +1,1399 @@
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_i2d
+  20              		.global	__aeabi_d2uiz
+  21              		.section	.text.main,"ax",%progbits
+  22              		.align	2
+  23              		.global	main
+  24              		.thumb
+  25              		.thumb_func
+  26              		.type	main, %function
+  27              	main:
+  28              	.LFB64:
+  29              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdio.h>
+  14:main.c        **** #include <stdlib.h>
+  15:main.c        **** #include <math.h>
+  16:main.c        **** #include "myTracer.h"
+  17:main.c        **** uint32_t calculations = 0;
+  18:main.c        **** int main(void)
+  19:main.c        **** {
+  30              		.loc 1 19 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 32
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 10B5     		push	{r4, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 88B0     		sub	sp, sp, #32
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 2
+
+
+  39              		.cfi_def_cfa_offset 40
+  20:main.c        ****     CyGlobalIntEnable;  /* Enable global interrupts. */
+  40              		.loc 1 20 0
+  41              		.syntax unified
+  42              	@ 20 "main.c" 1
+  43 0004 62B6     		CPSIE   i
+  44              	@ 0 "" 2
+  21:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  22:main.c        ****     myTracer_t myTracerObj1;
+  23:main.c        ****     myTracer_t myTracerObj2;
+  24:main.c        ****     myTimer_init(&myTracerObj1, MyDataWatchPoint,"Timer1");
+  45              		.loc 1 24 0
+  46              		.thumb
+  47              		.syntax unified
+  48 0006 2A4A     		ldr	r2, .L8
+  49 0008 0121     		movs	r1, #1
+  50 000a 04A8     		add	r0, sp, #16
+  51 000c FFF7FEFF 		bl	myTimer_init
+  52              	.LVL0:
+  25:main.c        ****     myTimer_init(&myTracerObj2, MyDataWatchPoint,"Timer2");
+  53              		.loc 1 25 0
+  54 0010 284A     		ldr	r2, .L8+4
+  55 0012 0121     		movs	r1, #1
+  56 0014 6846     		mov	r0, sp
+  57 0016 FFF7FEFF 		bl	myTimer_init
+  58              	.LVL1:
+  26:main.c        ****     UART_LOG_PutString("Start Program \r\n");
+  59              		.loc 1 26 0
+  60 001a 2748     		ldr	r0, .L8+8
+  61 001c FFF7FEFF 		bl	UART_LOG_PutString
+  62              	.LVL2:
+  27:main.c        ****     myTimer_start(&myTracerObj1);
+  63              		.loc 1 27 0
+  64 0020 04A8     		add	r0, sp, #16
+  65 0022 FFF7FEFF 		bl	myTimer_start
+  66              	.LVL3:
+  28:main.c        ****     myTimer_start(&myTracerObj2);
+  67              		.loc 1 28 0
+  68 0026 6846     		mov	r0, sp
+  69 0028 FFF7FEFF 		bl	myTimer_start
+  70              	.LVL4:
+  71              	.LBB2:
+  29:main.c        ****     for(int i = 0; i < 1000; i++){
+  72              		.loc 1 29 0
+  73 002c 0024     		movs	r4, #0
+  74 002e 09E0     		b	.L2
+  75              	.LVL5:
+  76              	.L3:
+  30:main.c        ****         calculations = sqrt(i);
+  77              		.loc 1 30 0 discriminator 3
+  78 0030 2046     		mov	r0, r4
+  79 0032 FFF7FEFF 		bl	__aeabi_i2d
+  80              	.LVL6:
+  81 0036 FFF7FEFF 		bl	sqrt
+  82              	.LVL7:
+  83 003a FFF7FEFF 		bl	__aeabi_d2uiz
+  84              	.LVL8:
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 3
+
+
+  85 003e 1F4B     		ldr	r3, .L8+12
+  86 0040 1860     		str	r0, [r3]
+  29:main.c        ****     for(int i = 0; i < 1000; i++){
+  87              		.loc 1 29 0 discriminator 3
+  88 0042 0134     		adds	r4, r4, #1
+  89              	.LVL9:
+  90              	.L2:
+  29:main.c        ****     for(int i = 0; i < 1000; i++){
+  91              		.loc 1 29 0 is_stmt 0 discriminator 1
+  92 0044 B4F57A7F 		cmp	r4, #1000
+  93 0048 F2DB     		blt	.L3
+  94              	.LBE2:
+  31:main.c        ****     }
+  32:main.c        ****     myTimerStop(&myTracerObj1);
+  95              		.loc 1 32 0 is_stmt 1
+  96 004a 04A8     		add	r0, sp, #16
+  97 004c FFF7FEFF 		bl	myTimerStop
+  98              	.LVL10:
+  33:main.c        ****     myTimerStop(&myTracerObj2);
+  99              		.loc 1 33 0
+ 100 0050 6846     		mov	r0, sp
+ 101 0052 FFF7FEFF 		bl	myTimerStop
+ 102              	.LVL11:
+  34:main.c        ****     myTimer_print(&myTracerObj1);
+ 103              		.loc 1 34 0
+ 104 0056 04A8     		add	r0, sp, #16
+ 105 0058 FFF7FEFF 		bl	myTimer_print
+ 106              	.LVL12:
+  35:main.c        ****     myTimer_print(&myTracerObj2);
+ 107              		.loc 1 35 0
+ 108 005c 6846     		mov	r0, sp
+ 109 005e FFF7FEFF 		bl	myTimer_print
+ 110              	.LVL13:
+  36:main.c        ****     myTimerReset(&myTracerObj1);
+ 111              		.loc 1 36 0
+ 112 0062 04A8     		add	r0, sp, #16
+ 113 0064 FFF7FEFF 		bl	myTimerReset
+ 114              	.LVL14:
+  37:main.c        ****     myTimerResume(&myTracerObj1);
+ 115              		.loc 1 37 0
+ 116 0068 04A8     		add	r0, sp, #16
+ 117 006a FFF7FEFF 		bl	myTimerResume
+ 118              	.LVL15:
+ 119              	.LBB3:
+  38:main.c        ****     for(int i = 0; i < 1000; i++){
+ 120              		.loc 1 38 0
+ 121 006e 0024     		movs	r4, #0
+ 122              	.LVL16:
+ 123 0070 09E0     		b	.L4
+ 124              	.LVL17:
+ 125              	.L5:
+  39:main.c        ****         calculations = sqrt(i);    
+ 126              		.loc 1 39 0 discriminator 3
+ 127 0072 2046     		mov	r0, r4
+ 128 0074 FFF7FEFF 		bl	__aeabi_i2d
+ 129              	.LVL18:
+ 130 0078 FFF7FEFF 		bl	sqrt
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 4
+
+
+ 131              	.LVL19:
+ 132 007c FFF7FEFF 		bl	__aeabi_d2uiz
+ 133              	.LVL20:
+ 134 0080 0E4B     		ldr	r3, .L8+12
+ 135 0082 1860     		str	r0, [r3]
+  38:main.c        ****     for(int i = 0; i < 1000; i++){
+ 136              		.loc 1 38 0 discriminator 3
+ 137 0084 0134     		adds	r4, r4, #1
+ 138              	.LVL21:
+ 139              	.L4:
+  38:main.c        ****     for(int i = 0; i < 1000; i++){
+ 140              		.loc 1 38 0 is_stmt 0 discriminator 1
+ 141 0086 B4F57A7F 		cmp	r4, #1000
+ 142 008a F2DB     		blt	.L5
+ 143              	.LBE3:
+  40:main.c        ****     }
+  41:main.c        ****     myTimerStop(&myTracerObj1);
+ 144              		.loc 1 41 0 is_stmt 1
+ 145 008c 04A8     		add	r0, sp, #16
+ 146 008e FFF7FEFF 		bl	myTimerStop
+ 147              	.LVL22:
+  42:main.c        ****     UART_LOG_PutString("\r\n");
+ 148              		.loc 1 42 0
+ 149 0092 0B4C     		ldr	r4, .L8+16
+ 150              	.LVL23:
+ 151 0094 2046     		mov	r0, r4
+ 152 0096 FFF7FEFF 		bl	UART_LOG_PutString
+ 153              	.LVL24:
+  43:main.c        ****     myTimer_print(&myTracerObj1);
+ 154              		.loc 1 43 0
+ 155 009a 04A8     		add	r0, sp, #16
+ 156 009c FFF7FEFF 		bl	myTimer_print
+ 157              	.LVL25:
+  44:main.c        ****     UART_LOG_PutString("\r\n");
+ 158              		.loc 1 44 0
+ 159 00a0 2046     		mov	r0, r4
+ 160 00a2 FFF7FEFF 		bl	UART_LOG_PutString
+ 161              	.LVL26:
+  45:main.c        ****     UART_LOG_PutString("End Program \r\n");
+ 162              		.loc 1 45 0
+ 163 00a6 0748     		ldr	r0, .L8+20
+ 164 00a8 FFF7FEFF 		bl	UART_LOG_PutString
+ 165              	.LVL27:
+ 166              	.L6:
+ 167 00ac FEE7     		b	.L6
+ 168              	.L9:
+ 169 00ae 00BF     		.align	2
+ 170              	.L8:
+ 171 00b0 00000000 		.word	.LC0
+ 172 00b4 08000000 		.word	.LC1
+ 173 00b8 10000000 		.word	.LC2
+ 174 00bc 00000000 		.word	.LANCHOR0
+ 175 00c0 24000000 		.word	.LC3
+ 176 00c4 28000000 		.word	.LC4
+ 177              		.cfi_endproc
+ 178              	.LFE64:
+ 179              		.size	main, .-main
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 5
+
+
+ 180              		.global	calculations
+ 181              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 182              		.align	2
+ 183              	.LC0:
+ 184 0000 54696D65 		.ascii	"Timer1\000"
+ 184      723100
+ 185 0007 00       		.space	1
+ 186              	.LC1:
+ 187 0008 54696D65 		.ascii	"Timer2\000"
+ 187      723200
+ 188 000f 00       		.space	1
+ 189              	.LC2:
+ 190 0010 53746172 		.ascii	"Start Program \015\012\000"
+ 190      74205072 
+ 190      6F677261 
+ 190      6D200D0A 
+ 190      00
+ 191 0021 000000   		.space	3
+ 192              	.LC3:
+ 193 0024 0D0A00   		.ascii	"\015\012\000"
+ 194 0027 00       		.space	1
+ 195              	.LC4:
+ 196 0028 456E6420 		.ascii	"End Program \015\012\000"
+ 196      50726F67 
+ 196      72616D20 
+ 196      0D0A00
+ 197              		.bss
+ 198              		.align	2
+ 199              		.set	.LANCHOR0,. + 0
+ 200              		.type	calculations, %object
+ 201              		.size	calculations, 4
+ 202              	calculations:
+ 203 0000 00000000 		.space	4
+ 204              		.text
+ 205              	.Letext0:
+ 206              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 207              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 208              		.file 4 "myTracer.h"
+ 209              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 210              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 211              		.file 7 "Generated_Source\\PSoC5/UART_LOG.h"
+ 212              		.section	.debug_info,"",%progbits
+ 213              	.Ldebug_info0:
+ 214 0000 B7030000 		.4byte	0x3b7
+ 215 0004 0400     		.2byte	0x4
+ 216 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 217 000a 04       		.byte	0x4
+ 218 000b 01       		.uleb128 0x1
+ 219 000c C1000000 		.4byte	.LASF44
+ 220 0010 0C       		.byte	0xc
+ 221 0011 7E020000 		.4byte	.LASF45
+ 222 0015 97010000 		.4byte	.LASF46
+ 223 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 224 001d 00000000 		.4byte	0
+ 225 0021 00000000 		.4byte	.Ldebug_line0
+ 226 0025 02       		.uleb128 0x2
+ 227 0026 01       		.byte	0x1
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 6
+
+
+ 228 0027 06       		.byte	0x6
+ 229 0028 CC020000 		.4byte	.LASF0
+ 230 002c 02       		.uleb128 0x2
+ 231 002d 01       		.byte	0x1
+ 232 002e 08       		.byte	0x8
+ 233 002f B3000000 		.4byte	.LASF1
+ 234 0033 02       		.uleb128 0x2
+ 235 0034 02       		.byte	0x2
+ 236 0035 05       		.byte	0x5
+ 237 0036 8A020000 		.4byte	.LASF2
+ 238 003a 02       		.uleb128 0x2
+ 239 003b 02       		.byte	0x2
+ 240 003c 07       		.byte	0x7
+ 241 003d 77010000 		.4byte	.LASF3
+ 242 0041 03       		.uleb128 0x3
+ 243 0042 37000000 		.4byte	.LASF5
+ 244 0046 02       		.byte	0x2
+ 245 0047 3F       		.byte	0x3f
+ 246 0048 4C000000 		.4byte	0x4c
+ 247 004c 02       		.uleb128 0x2
+ 248 004d 04       		.byte	0x4
+ 249 004e 05       		.byte	0x5
+ 250 004f AA020000 		.4byte	.LASF4
+ 251 0053 03       		.uleb128 0x3
+ 252 0054 E5010000 		.4byte	.LASF6
+ 253 0058 02       		.byte	0x2
+ 254 0059 41       		.byte	0x41
+ 255 005a 5E000000 		.4byte	0x5e
+ 256 005e 02       		.uleb128 0x2
+ 257 005f 04       		.byte	0x4
+ 258 0060 07       		.byte	0x7
+ 259 0061 65010000 		.4byte	.LASF7
+ 260 0065 02       		.uleb128 0x2
+ 261 0066 08       		.byte	0x8
+ 262 0067 05       		.byte	0x5
+ 263 0068 70020000 		.4byte	.LASF8
+ 264 006c 02       		.uleb128 0x2
+ 265 006d 08       		.byte	0x8
+ 266 006e 07       		.byte	0x7
+ 267 006f 29020000 		.4byte	.LASF9
+ 268 0073 04       		.uleb128 0x4
+ 269 0074 04       		.byte	0x4
+ 270 0075 05       		.byte	0x5
+ 271 0076 696E7400 		.ascii	"int\000"
+ 272 007a 02       		.uleb128 0x2
+ 273 007b 04       		.byte	0x4
+ 274 007c 07       		.byte	0x7
+ 275 007d 10020000 		.4byte	.LASF10
+ 276 0081 03       		.uleb128 0x3
+ 277 0082 83000000 		.4byte	.LASF11
+ 278 0086 03       		.byte	0x3
+ 279 0087 2C       		.byte	0x2c
+ 280 0088 41000000 		.4byte	0x41
+ 281 008c 03       		.uleb128 0x3
+ 282 008d A1020000 		.4byte	.LASF12
+ 283 0091 03       		.byte	0x3
+ 284 0092 30       		.byte	0x30
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 7
+
+
+ 285 0093 53000000 		.4byte	0x53
+ 286 0097 02       		.uleb128 0x2
+ 287 0098 04       		.byte	0x4
+ 288 0099 04       		.byte	0x4
+ 289 009a AD000000 		.4byte	.LASF13
+ 290 009e 02       		.uleb128 0x2
+ 291 009f 08       		.byte	0x8
+ 292 00a0 04       		.byte	0x4
+ 293 00a1 DE010000 		.4byte	.LASF14
+ 294 00a5 02       		.uleb128 0x2
+ 295 00a6 01       		.byte	0x1
+ 296 00a7 08       		.byte	0x8
+ 297 00a8 85020000 		.4byte	.LASF15
+ 298 00ac 02       		.uleb128 0x2
+ 299 00ad 08       		.byte	0x8
+ 300 00ae 04       		.byte	0x4
+ 301 00af 5B020000 		.4byte	.LASF16
+ 302 00b3 02       		.uleb128 0x2
+ 303 00b4 04       		.byte	0x4
+ 304 00b5 07       		.byte	0x7
+ 305 00b6 67020000 		.4byte	.LASF17
+ 306 00ba 05       		.uleb128 0x5
+ 307 00bb 04       		.byte	0x4
+ 308 00bc A5000000 		.4byte	0xa5
+ 309 00c0 06       		.uleb128 0x6
+ 310 00c1 01       		.byte	0x1
+ 311 00c2 2C000000 		.4byte	0x2c
+ 312 00c6 04       		.byte	0x4
+ 313 00c7 10       		.byte	0x10
+ 314 00c8 EB000000 		.4byte	0xeb
+ 315 00cc 07       		.uleb128 0x7
+ 316 00cd C4020000 		.4byte	.LASF18
+ 317 00d1 00       		.byte	0
+ 318 00d2 07       		.uleb128 0x7
+ 319 00d3 1D020000 		.4byte	.LASF19
+ 320 00d7 01       		.byte	0x1
+ 321 00d8 07       		.uleb128 0x7
+ 322 00d9 73000000 		.4byte	.LASF20
+ 323 00dd 02       		.byte	0x2
+ 324 00de 07       		.uleb128 0x7
+ 325 00df 7A000000 		.4byte	.LASF21
+ 326 00e3 03       		.byte	0x3
+ 327 00e4 07       		.uleb128 0x7
+ 328 00e5 F0010000 		.4byte	.LASF22
+ 329 00e9 04       		.byte	0x4
+ 330 00ea 00       		.byte	0
+ 331 00eb 03       		.uleb128 0x3
+ 332 00ec 9E000000 		.4byte	.LASF23
+ 333 00f0 04       		.byte	0x4
+ 334 00f1 16       		.byte	0x16
+ 335 00f2 C0000000 		.4byte	0xc0
+ 336 00f6 06       		.uleb128 0x6
+ 337 00f7 01       		.byte	0x1
+ 338 00f8 2C000000 		.4byte	0x2c
+ 339 00fc 04       		.byte	0x4
+ 340 00fd 18       		.byte	0x18
+ 341 00fe 15010000 		.4byte	0x115
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 8
+
+
+ 342 0102 07       		.uleb128 0x7
+ 343 0103 00000000 		.4byte	.LASF24
+ 344 0107 00       		.byte	0
+ 345 0108 07       		.uleb128 0x7
+ 346 0109 B3020000 		.4byte	.LASF25
+ 347 010d 01       		.byte	0x1
+ 348 010e 08       		.uleb128 0x8
+ 349 010f 50494E00 		.ascii	"PIN\000"
+ 350 0113 02       		.byte	0x2
+ 351 0114 00       		.byte	0
+ 352 0115 03       		.uleb128 0x3
+ 353 0116 08000000 		.4byte	.LASF26
+ 354 011a 04       		.byte	0x4
+ 355 011b 1C       		.byte	0x1c
+ 356 011c F6000000 		.4byte	0xf6
+ 357 0120 09       		.uleb128 0x9
+ 358 0121 10       		.byte	0x10
+ 359 0122 04       		.byte	0x4
+ 360 0123 1E       		.byte	0x1e
+ 361 0124 59010000 		.4byte	0x159
+ 362 0128 0A       		.uleb128 0xa
+ 363 0129 D8020000 		.4byte	.LASF27
+ 364 012d 04       		.byte	0x4
+ 365 012e 1F       		.byte	0x1f
+ 366 012f 15010000 		.4byte	0x115
+ 367 0133 00       		.byte	0
+ 368 0134 0A       		.uleb128 0xa
+ 369 0135 23000000 		.4byte	.LASF28
+ 370 0139 04       		.byte	0x4
+ 371 013a 20       		.byte	0x20
+ 372 013b BA000000 		.4byte	0xba
+ 373 013f 04       		.byte	0x4
+ 374 0140 0A       		.uleb128 0xa
+ 375 0141 2A000000 		.4byte	.LASF29
+ 376 0145 04       		.byte	0x4
+ 377 0146 21       		.byte	0x21
+ 378 0147 8C000000 		.4byte	0x8c
+ 379 014b 08       		.byte	0x8
+ 380 014c 0A       		.uleb128 0xa
+ 381 014d 4F010000 		.4byte	.LASF30
+ 382 0151 04       		.byte	0x4
+ 383 0152 22       		.byte	0x22
+ 384 0153 EB000000 		.4byte	0xeb
+ 385 0157 0C       		.byte	0xc
+ 386 0158 00       		.byte	0
+ 387 0159 03       		.uleb128 0x3
+ 388 015a 5A000000 		.4byte	.LASF31
+ 389 015e 04       		.byte	0x4
+ 390 015f 23       		.byte	0x23
+ 391 0160 20010000 		.4byte	0x120
+ 392 0164 0B       		.uleb128 0xb
+ 393 0165 0B020000 		.4byte	.LASF47
+ 394 0169 01       		.byte	0x1
+ 395 016a 12       		.byte	0x12
+ 396 016b 73000000 		.4byte	0x73
+ 397 016f 00000000 		.4byte	.LFB64
+ 398 0173 C8000000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 9
+
+
+ 399 0177 01       		.uleb128 0x1
+ 400 0178 9C       		.byte	0x9c
+ 401 0179 40030000 		.4byte	0x340
+ 402 017d 0C       		.uleb128 0xc
+ 403 017e 94020000 		.4byte	.LASF32
+ 404 0182 01       		.byte	0x1
+ 405 0183 16       		.byte	0x16
+ 406 0184 59010000 		.4byte	0x159
+ 407 0188 02       		.uleb128 0x2
+ 408 0189 91       		.byte	0x91
+ 409 018a 68       		.sleb128 -24
+ 410 018b 0C       		.uleb128 0xc
+ 411 018c 58010000 		.4byte	.LASF33
+ 412 0190 01       		.byte	0x1
+ 413 0191 17       		.byte	0x17
+ 414 0192 59010000 		.4byte	0x159
+ 415 0196 02       		.uleb128 0x2
+ 416 0197 91       		.byte	0x91
+ 417 0198 58       		.sleb128 -40
+ 418 0199 0D       		.uleb128 0xd
+ 419 019a 2C000000 		.4byte	.LBB2
+ 420 019e 1E000000 		.4byte	.LBE2-.LBB2
+ 421 01a2 BD010000 		.4byte	0x1bd
+ 422 01a6 0E       		.uleb128 0xe
+ 423 01a7 6900     		.ascii	"i\000"
+ 424 01a9 01       		.byte	0x1
+ 425 01aa 1D       		.byte	0x1d
+ 426 01ab 73000000 		.4byte	0x73
+ 427 01af 00000000 		.4byte	.LLST0
+ 428 01b3 0F       		.uleb128 0xf
+ 429 01b4 3A000000 		.4byte	.LVL7
+ 430 01b8 62030000 		.4byte	0x362
+ 431 01bc 00       		.byte	0
+ 432 01bd 0D       		.uleb128 0xd
+ 433 01be 6E000000 		.4byte	.LBB3
+ 434 01c2 1E000000 		.4byte	.LBE3-.LBB3
+ 435 01c6 E1010000 		.4byte	0x1e1
+ 436 01ca 0E       		.uleb128 0xe
+ 437 01cb 6900     		.ascii	"i\000"
+ 438 01cd 01       		.byte	0x1
+ 439 01ce 26       		.byte	0x26
+ 440 01cf 73000000 		.4byte	0x73
+ 441 01d3 1F000000 		.4byte	.LLST1
+ 442 01d7 0F       		.uleb128 0xf
+ 443 01d8 7C000000 		.4byte	.LVL19
+ 444 01dc 62030000 		.4byte	0x362
+ 445 01e0 00       		.byte	0
+ 446 01e1 10       		.uleb128 0x10
+ 447 01e2 10000000 		.4byte	.LVL0
+ 448 01e6 6D030000 		.4byte	0x36d
+ 449 01ea 03020000 		.4byte	0x203
+ 450 01ee 11       		.uleb128 0x11
+ 451 01ef 01       		.uleb128 0x1
+ 452 01f0 50       		.byte	0x50
+ 453 01f1 02       		.uleb128 0x2
+ 454 01f2 91       		.byte	0x91
+ 455 01f3 68       		.sleb128 -24
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 10
+
+
+ 456 01f4 11       		.uleb128 0x11
+ 457 01f5 01       		.uleb128 0x1
+ 458 01f6 51       		.byte	0x51
+ 459 01f7 01       		.uleb128 0x1
+ 460 01f8 31       		.byte	0x31
+ 461 01f9 11       		.uleb128 0x11
+ 462 01fa 01       		.uleb128 0x1
+ 463 01fb 52       		.byte	0x52
+ 464 01fc 05       		.uleb128 0x5
+ 465 01fd 03       		.byte	0x3
+ 466 01fe 00000000 		.4byte	.LC0
+ 467 0202 00       		.byte	0
+ 468 0203 10       		.uleb128 0x10
+ 469 0204 1A000000 		.4byte	.LVL1
+ 470 0208 6D030000 		.4byte	0x36d
+ 471 020c 25020000 		.4byte	0x225
+ 472 0210 11       		.uleb128 0x11
+ 473 0211 01       		.uleb128 0x1
+ 474 0212 50       		.byte	0x50
+ 475 0213 02       		.uleb128 0x2
+ 476 0214 7D       		.byte	0x7d
+ 477 0215 00       		.sleb128 0
+ 478 0216 11       		.uleb128 0x11
+ 479 0217 01       		.uleb128 0x1
+ 480 0218 51       		.byte	0x51
+ 481 0219 01       		.uleb128 0x1
+ 482 021a 31       		.byte	0x31
+ 483 021b 11       		.uleb128 0x11
+ 484 021c 01       		.uleb128 0x1
+ 485 021d 52       		.byte	0x52
+ 486 021e 05       		.uleb128 0x5
+ 487 021f 03       		.byte	0x3
+ 488 0220 08000000 		.4byte	.LC1
+ 489 0224 00       		.byte	0
+ 490 0225 10       		.uleb128 0x10
+ 491 0226 20000000 		.4byte	.LVL2
+ 492 022a 78030000 		.4byte	0x378
+ 493 022e 3C020000 		.4byte	0x23c
+ 494 0232 11       		.uleb128 0x11
+ 495 0233 01       		.uleb128 0x1
+ 496 0234 50       		.byte	0x50
+ 497 0235 05       		.uleb128 0x5
+ 498 0236 03       		.byte	0x3
+ 499 0237 10000000 		.4byte	.LC2
+ 500 023b 00       		.byte	0
+ 501 023c 10       		.uleb128 0x10
+ 502 023d 26000000 		.4byte	.LVL3
+ 503 0241 83030000 		.4byte	0x383
+ 504 0245 50020000 		.4byte	0x250
+ 505 0249 11       		.uleb128 0x11
+ 506 024a 01       		.uleb128 0x1
+ 507 024b 50       		.byte	0x50
+ 508 024c 02       		.uleb128 0x2
+ 509 024d 91       		.byte	0x91
+ 510 024e 68       		.sleb128 -24
+ 511 024f 00       		.byte	0
+ 512 0250 10       		.uleb128 0x10
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 11
+
+
+ 513 0251 2C000000 		.4byte	.LVL4
+ 514 0255 83030000 		.4byte	0x383
+ 515 0259 64020000 		.4byte	0x264
+ 516 025d 11       		.uleb128 0x11
+ 517 025e 01       		.uleb128 0x1
+ 518 025f 50       		.byte	0x50
+ 519 0260 02       		.uleb128 0x2
+ 520 0261 7D       		.byte	0x7d
+ 521 0262 00       		.sleb128 0
+ 522 0263 00       		.byte	0
+ 523 0264 10       		.uleb128 0x10
+ 524 0265 50000000 		.4byte	.LVL10
+ 525 0269 8E030000 		.4byte	0x38e
+ 526 026d 78020000 		.4byte	0x278
+ 527 0271 11       		.uleb128 0x11
+ 528 0272 01       		.uleb128 0x1
+ 529 0273 50       		.byte	0x50
+ 530 0274 02       		.uleb128 0x2
+ 531 0275 91       		.byte	0x91
+ 532 0276 68       		.sleb128 -24
+ 533 0277 00       		.byte	0
+ 534 0278 10       		.uleb128 0x10
+ 535 0279 56000000 		.4byte	.LVL11
+ 536 027d 8E030000 		.4byte	0x38e
+ 537 0281 8C020000 		.4byte	0x28c
+ 538 0285 11       		.uleb128 0x11
+ 539 0286 01       		.uleb128 0x1
+ 540 0287 50       		.byte	0x50
+ 541 0288 02       		.uleb128 0x2
+ 542 0289 7D       		.byte	0x7d
+ 543 028a 00       		.sleb128 0
+ 544 028b 00       		.byte	0
+ 545 028c 10       		.uleb128 0x10
+ 546 028d 5C000000 		.4byte	.LVL12
+ 547 0291 99030000 		.4byte	0x399
+ 548 0295 A0020000 		.4byte	0x2a0
+ 549 0299 11       		.uleb128 0x11
+ 550 029a 01       		.uleb128 0x1
+ 551 029b 50       		.byte	0x50
+ 552 029c 02       		.uleb128 0x2
+ 553 029d 91       		.byte	0x91
+ 554 029e 68       		.sleb128 -24
+ 555 029f 00       		.byte	0
+ 556 02a0 10       		.uleb128 0x10
+ 557 02a1 62000000 		.4byte	.LVL13
+ 558 02a5 99030000 		.4byte	0x399
+ 559 02a9 B4020000 		.4byte	0x2b4
+ 560 02ad 11       		.uleb128 0x11
+ 561 02ae 01       		.uleb128 0x1
+ 562 02af 50       		.byte	0x50
+ 563 02b0 02       		.uleb128 0x2
+ 564 02b1 7D       		.byte	0x7d
+ 565 02b2 00       		.sleb128 0
+ 566 02b3 00       		.byte	0
+ 567 02b4 10       		.uleb128 0x10
+ 568 02b5 68000000 		.4byte	.LVL14
+ 569 02b9 A4030000 		.4byte	0x3a4
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 12
+
+
+ 570 02bd C8020000 		.4byte	0x2c8
+ 571 02c1 11       		.uleb128 0x11
+ 572 02c2 01       		.uleb128 0x1
+ 573 02c3 50       		.byte	0x50
+ 574 02c4 02       		.uleb128 0x2
+ 575 02c5 91       		.byte	0x91
+ 576 02c6 68       		.sleb128 -24
+ 577 02c7 00       		.byte	0
+ 578 02c8 10       		.uleb128 0x10
+ 579 02c9 6E000000 		.4byte	.LVL15
+ 580 02cd AF030000 		.4byte	0x3af
+ 581 02d1 DC020000 		.4byte	0x2dc
+ 582 02d5 11       		.uleb128 0x11
+ 583 02d6 01       		.uleb128 0x1
+ 584 02d7 50       		.byte	0x50
+ 585 02d8 02       		.uleb128 0x2
+ 586 02d9 91       		.byte	0x91
+ 587 02da 68       		.sleb128 -24
+ 588 02db 00       		.byte	0
+ 589 02dc 10       		.uleb128 0x10
+ 590 02dd 92000000 		.4byte	.LVL22
+ 591 02e1 8E030000 		.4byte	0x38e
+ 592 02e5 F0020000 		.4byte	0x2f0
+ 593 02e9 11       		.uleb128 0x11
+ 594 02ea 01       		.uleb128 0x1
+ 595 02eb 50       		.byte	0x50
+ 596 02ec 02       		.uleb128 0x2
+ 597 02ed 91       		.byte	0x91
+ 598 02ee 68       		.sleb128 -24
+ 599 02ef 00       		.byte	0
+ 600 02f0 10       		.uleb128 0x10
+ 601 02f1 9A000000 		.4byte	.LVL24
+ 602 02f5 78030000 		.4byte	0x378
+ 603 02f9 04030000 		.4byte	0x304
+ 604 02fd 11       		.uleb128 0x11
+ 605 02fe 01       		.uleb128 0x1
+ 606 02ff 50       		.byte	0x50
+ 607 0300 02       		.uleb128 0x2
+ 608 0301 74       		.byte	0x74
+ 609 0302 00       		.sleb128 0
+ 610 0303 00       		.byte	0
+ 611 0304 10       		.uleb128 0x10
+ 612 0305 A0000000 		.4byte	.LVL25
+ 613 0309 99030000 		.4byte	0x399
+ 614 030d 18030000 		.4byte	0x318
+ 615 0311 11       		.uleb128 0x11
+ 616 0312 01       		.uleb128 0x1
+ 617 0313 50       		.byte	0x50
+ 618 0314 02       		.uleb128 0x2
+ 619 0315 91       		.byte	0x91
+ 620 0316 68       		.sleb128 -24
+ 621 0317 00       		.byte	0
+ 622 0318 10       		.uleb128 0x10
+ 623 0319 A6000000 		.4byte	.LVL26
+ 624 031d 78030000 		.4byte	0x378
+ 625 0321 2C030000 		.4byte	0x32c
+ 626 0325 11       		.uleb128 0x11
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 13
+
+
+ 627 0326 01       		.uleb128 0x1
+ 628 0327 50       		.byte	0x50
+ 629 0328 02       		.uleb128 0x2
+ 630 0329 74       		.byte	0x74
+ 631 032a 00       		.sleb128 0
+ 632 032b 00       		.byte	0
+ 633 032c 12       		.uleb128 0x12
+ 634 032d AC000000 		.4byte	.LVL27
+ 635 0331 78030000 		.4byte	0x378
+ 636 0335 11       		.uleb128 0x11
+ 637 0336 01       		.uleb128 0x1
+ 638 0337 50       		.byte	0x50
+ 639 0338 05       		.uleb128 0x5
+ 640 0339 03       		.byte	0x3
+ 641 033a 28000000 		.4byte	.LC4
+ 642 033e 00       		.byte	0
+ 643 033f 00       		.byte	0
+ 644 0340 13       		.uleb128 0x13
+ 645 0341 8A010000 		.4byte	.LASF34
+ 646 0345 05       		.byte	0x5
+ 647 0346 1207     		.2byte	0x712
+ 648 0348 4C030000 		.4byte	0x34c
+ 649 034c 14       		.uleb128 0x14
+ 650 034d 81000000 		.4byte	0x81
+ 651 0351 15       		.uleb128 0x15
+ 652 0352 40020000 		.4byte	.LASF35
+ 653 0356 01       		.byte	0x1
+ 654 0357 11       		.byte	0x11
+ 655 0358 8C000000 		.4byte	0x8c
+ 656 035c 05       		.uleb128 0x5
+ 657 035d 03       		.byte	0x3
+ 658 035e 00000000 		.4byte	calculations
+ 659 0362 16       		.uleb128 0x16
+ 660 0363 DF020000 		.4byte	.LASF36
+ 661 0367 DF020000 		.4byte	.LASF36
+ 662 036b 06       		.byte	0x6
+ 663 036c 87       		.byte	0x87
+ 664 036d 16       		.uleb128 0x16
+ 665 036e FE010000 		.4byte	.LASF37
+ 666 0372 FE010000 		.4byte	.LASF37
+ 667 0376 04       		.byte	0x4
+ 668 0377 25       		.byte	0x25
+ 669 0378 16       		.uleb128 0x16
+ 670 0379 8B000000 		.4byte	.LASF38
+ 671 037d 8B000000 		.4byte	.LASF38
+ 672 0381 07       		.byte	0x7
+ 673 0382 8B       		.byte	0x8b
+ 674 0383 16       		.uleb128 0x16
+ 675 0384 65000000 		.4byte	.LASF39
+ 676 0388 65000000 		.4byte	.LASF39
+ 677 038c 04       		.byte	0x4
+ 678 038d 26       		.byte	0x26
+ 679 038e 16       		.uleb128 0x16
+ 680 038f 4E000000 		.4byte	.LASF40
+ 681 0393 4E000000 		.4byte	.LASF40
+ 682 0397 04       		.byte	0x4
+ 683 0398 28       		.byte	0x28
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 14
+
+
+ 684 0399 16       		.uleb128 0x16
+ 685 039a 15000000 		.4byte	.LASF41
+ 686 039e 15000000 		.4byte	.LASF41
+ 687 03a2 04       		.byte	0x4
+ 688 03a3 2D       		.byte	0x2d
+ 689 03a4 16       		.uleb128 0x16
+ 690 03a5 41000000 		.4byte	.LASF42
+ 691 03a9 41000000 		.4byte	.LASF42
+ 692 03ad 04       		.byte	0x4
+ 693 03ae 2A       		.byte	0x2a
+ 694 03af 16       		.uleb128 0x16
+ 695 03b0 4D020000 		.4byte	.LASF43
+ 696 03b4 4D020000 		.4byte	.LASF43
+ 697 03b8 04       		.byte	0x4
+ 698 03b9 29       		.byte	0x29
+ 699 03ba 00       		.byte	0
+ 700              		.section	.debug_abbrev,"",%progbits
+ 701              	.Ldebug_abbrev0:
+ 702 0000 01       		.uleb128 0x1
+ 703 0001 11       		.uleb128 0x11
+ 704 0002 01       		.byte	0x1
+ 705 0003 25       		.uleb128 0x25
+ 706 0004 0E       		.uleb128 0xe
+ 707 0005 13       		.uleb128 0x13
+ 708 0006 0B       		.uleb128 0xb
+ 709 0007 03       		.uleb128 0x3
+ 710 0008 0E       		.uleb128 0xe
+ 711 0009 1B       		.uleb128 0x1b
+ 712 000a 0E       		.uleb128 0xe
+ 713 000b 55       		.uleb128 0x55
+ 714 000c 17       		.uleb128 0x17
+ 715 000d 11       		.uleb128 0x11
+ 716 000e 01       		.uleb128 0x1
+ 717 000f 10       		.uleb128 0x10
+ 718 0010 17       		.uleb128 0x17
+ 719 0011 00       		.byte	0
+ 720 0012 00       		.byte	0
+ 721 0013 02       		.uleb128 0x2
+ 722 0014 24       		.uleb128 0x24
+ 723 0015 00       		.byte	0
+ 724 0016 0B       		.uleb128 0xb
+ 725 0017 0B       		.uleb128 0xb
+ 726 0018 3E       		.uleb128 0x3e
+ 727 0019 0B       		.uleb128 0xb
+ 728 001a 03       		.uleb128 0x3
+ 729 001b 0E       		.uleb128 0xe
+ 730 001c 00       		.byte	0
+ 731 001d 00       		.byte	0
+ 732 001e 03       		.uleb128 0x3
+ 733 001f 16       		.uleb128 0x16
+ 734 0020 00       		.byte	0
+ 735 0021 03       		.uleb128 0x3
+ 736 0022 0E       		.uleb128 0xe
+ 737 0023 3A       		.uleb128 0x3a
+ 738 0024 0B       		.uleb128 0xb
+ 739 0025 3B       		.uleb128 0x3b
+ 740 0026 0B       		.uleb128 0xb
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 15
+
+
+ 741 0027 49       		.uleb128 0x49
+ 742 0028 13       		.uleb128 0x13
+ 743 0029 00       		.byte	0
+ 744 002a 00       		.byte	0
+ 745 002b 04       		.uleb128 0x4
+ 746 002c 24       		.uleb128 0x24
+ 747 002d 00       		.byte	0
+ 748 002e 0B       		.uleb128 0xb
+ 749 002f 0B       		.uleb128 0xb
+ 750 0030 3E       		.uleb128 0x3e
+ 751 0031 0B       		.uleb128 0xb
+ 752 0032 03       		.uleb128 0x3
+ 753 0033 08       		.uleb128 0x8
+ 754 0034 00       		.byte	0
+ 755 0035 00       		.byte	0
+ 756 0036 05       		.uleb128 0x5
+ 757 0037 0F       		.uleb128 0xf
+ 758 0038 00       		.byte	0
+ 759 0039 0B       		.uleb128 0xb
+ 760 003a 0B       		.uleb128 0xb
+ 761 003b 49       		.uleb128 0x49
+ 762 003c 13       		.uleb128 0x13
+ 763 003d 00       		.byte	0
+ 764 003e 00       		.byte	0
+ 765 003f 06       		.uleb128 0x6
+ 766 0040 04       		.uleb128 0x4
+ 767 0041 01       		.byte	0x1
+ 768 0042 0B       		.uleb128 0xb
+ 769 0043 0B       		.uleb128 0xb
+ 770 0044 49       		.uleb128 0x49
+ 771 0045 13       		.uleb128 0x13
+ 772 0046 3A       		.uleb128 0x3a
+ 773 0047 0B       		.uleb128 0xb
+ 774 0048 3B       		.uleb128 0x3b
+ 775 0049 0B       		.uleb128 0xb
+ 776 004a 01       		.uleb128 0x1
+ 777 004b 13       		.uleb128 0x13
+ 778 004c 00       		.byte	0
+ 779 004d 00       		.byte	0
+ 780 004e 07       		.uleb128 0x7
+ 781 004f 28       		.uleb128 0x28
+ 782 0050 00       		.byte	0
+ 783 0051 03       		.uleb128 0x3
+ 784 0052 0E       		.uleb128 0xe
+ 785 0053 1C       		.uleb128 0x1c
+ 786 0054 0B       		.uleb128 0xb
+ 787 0055 00       		.byte	0
+ 788 0056 00       		.byte	0
+ 789 0057 08       		.uleb128 0x8
+ 790 0058 28       		.uleb128 0x28
+ 791 0059 00       		.byte	0
+ 792 005a 03       		.uleb128 0x3
+ 793 005b 08       		.uleb128 0x8
+ 794 005c 1C       		.uleb128 0x1c
+ 795 005d 0B       		.uleb128 0xb
+ 796 005e 00       		.byte	0
+ 797 005f 00       		.byte	0
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 16
+
+
+ 798 0060 09       		.uleb128 0x9
+ 799 0061 13       		.uleb128 0x13
+ 800 0062 01       		.byte	0x1
+ 801 0063 0B       		.uleb128 0xb
+ 802 0064 0B       		.uleb128 0xb
+ 803 0065 3A       		.uleb128 0x3a
+ 804 0066 0B       		.uleb128 0xb
+ 805 0067 3B       		.uleb128 0x3b
+ 806 0068 0B       		.uleb128 0xb
+ 807 0069 01       		.uleb128 0x1
+ 808 006a 13       		.uleb128 0x13
+ 809 006b 00       		.byte	0
+ 810 006c 00       		.byte	0
+ 811 006d 0A       		.uleb128 0xa
+ 812 006e 0D       		.uleb128 0xd
+ 813 006f 00       		.byte	0
+ 814 0070 03       		.uleb128 0x3
+ 815 0071 0E       		.uleb128 0xe
+ 816 0072 3A       		.uleb128 0x3a
+ 817 0073 0B       		.uleb128 0xb
+ 818 0074 3B       		.uleb128 0x3b
+ 819 0075 0B       		.uleb128 0xb
+ 820 0076 49       		.uleb128 0x49
+ 821 0077 13       		.uleb128 0x13
+ 822 0078 38       		.uleb128 0x38
+ 823 0079 0B       		.uleb128 0xb
+ 824 007a 00       		.byte	0
+ 825 007b 00       		.byte	0
+ 826 007c 0B       		.uleb128 0xb
+ 827 007d 2E       		.uleb128 0x2e
+ 828 007e 01       		.byte	0x1
+ 829 007f 3F       		.uleb128 0x3f
+ 830 0080 19       		.uleb128 0x19
+ 831 0081 03       		.uleb128 0x3
+ 832 0082 0E       		.uleb128 0xe
+ 833 0083 3A       		.uleb128 0x3a
+ 834 0084 0B       		.uleb128 0xb
+ 835 0085 3B       		.uleb128 0x3b
+ 836 0086 0B       		.uleb128 0xb
+ 837 0087 27       		.uleb128 0x27
+ 838 0088 19       		.uleb128 0x19
+ 839 0089 49       		.uleb128 0x49
+ 840 008a 13       		.uleb128 0x13
+ 841 008b 8701     		.uleb128 0x87
+ 842 008d 19       		.uleb128 0x19
+ 843 008e 11       		.uleb128 0x11
+ 844 008f 01       		.uleb128 0x1
+ 845 0090 12       		.uleb128 0x12
+ 846 0091 06       		.uleb128 0x6
+ 847 0092 40       		.uleb128 0x40
+ 848 0093 18       		.uleb128 0x18
+ 849 0094 9642     		.uleb128 0x2116
+ 850 0096 19       		.uleb128 0x19
+ 851 0097 01       		.uleb128 0x1
+ 852 0098 13       		.uleb128 0x13
+ 853 0099 00       		.byte	0
+ 854 009a 00       		.byte	0
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 17
+
+
+ 855 009b 0C       		.uleb128 0xc
+ 856 009c 34       		.uleb128 0x34
+ 857 009d 00       		.byte	0
+ 858 009e 03       		.uleb128 0x3
+ 859 009f 0E       		.uleb128 0xe
+ 860 00a0 3A       		.uleb128 0x3a
+ 861 00a1 0B       		.uleb128 0xb
+ 862 00a2 3B       		.uleb128 0x3b
+ 863 00a3 0B       		.uleb128 0xb
+ 864 00a4 49       		.uleb128 0x49
+ 865 00a5 13       		.uleb128 0x13
+ 866 00a6 02       		.uleb128 0x2
+ 867 00a7 18       		.uleb128 0x18
+ 868 00a8 00       		.byte	0
+ 869 00a9 00       		.byte	0
+ 870 00aa 0D       		.uleb128 0xd
+ 871 00ab 0B       		.uleb128 0xb
+ 872 00ac 01       		.byte	0x1
+ 873 00ad 11       		.uleb128 0x11
+ 874 00ae 01       		.uleb128 0x1
+ 875 00af 12       		.uleb128 0x12
+ 876 00b0 06       		.uleb128 0x6
+ 877 00b1 01       		.uleb128 0x1
+ 878 00b2 13       		.uleb128 0x13
+ 879 00b3 00       		.byte	0
+ 880 00b4 00       		.byte	0
+ 881 00b5 0E       		.uleb128 0xe
+ 882 00b6 34       		.uleb128 0x34
+ 883 00b7 00       		.byte	0
+ 884 00b8 03       		.uleb128 0x3
+ 885 00b9 08       		.uleb128 0x8
+ 886 00ba 3A       		.uleb128 0x3a
+ 887 00bb 0B       		.uleb128 0xb
+ 888 00bc 3B       		.uleb128 0x3b
+ 889 00bd 0B       		.uleb128 0xb
+ 890 00be 49       		.uleb128 0x49
+ 891 00bf 13       		.uleb128 0x13
+ 892 00c0 02       		.uleb128 0x2
+ 893 00c1 17       		.uleb128 0x17
+ 894 00c2 00       		.byte	0
+ 895 00c3 00       		.byte	0
+ 896 00c4 0F       		.uleb128 0xf
+ 897 00c5 898201   		.uleb128 0x4109
+ 898 00c8 00       		.byte	0
+ 899 00c9 11       		.uleb128 0x11
+ 900 00ca 01       		.uleb128 0x1
+ 901 00cb 31       		.uleb128 0x31
+ 902 00cc 13       		.uleb128 0x13
+ 903 00cd 00       		.byte	0
+ 904 00ce 00       		.byte	0
+ 905 00cf 10       		.uleb128 0x10
+ 906 00d0 898201   		.uleb128 0x4109
+ 907 00d3 01       		.byte	0x1
+ 908 00d4 11       		.uleb128 0x11
+ 909 00d5 01       		.uleb128 0x1
+ 910 00d6 31       		.uleb128 0x31
+ 911 00d7 13       		.uleb128 0x13
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 18
+
+
+ 912 00d8 01       		.uleb128 0x1
+ 913 00d9 13       		.uleb128 0x13
+ 914 00da 00       		.byte	0
+ 915 00db 00       		.byte	0
+ 916 00dc 11       		.uleb128 0x11
+ 917 00dd 8A8201   		.uleb128 0x410a
+ 918 00e0 00       		.byte	0
+ 919 00e1 02       		.uleb128 0x2
+ 920 00e2 18       		.uleb128 0x18
+ 921 00e3 9142     		.uleb128 0x2111
+ 922 00e5 18       		.uleb128 0x18
+ 923 00e6 00       		.byte	0
+ 924 00e7 00       		.byte	0
+ 925 00e8 12       		.uleb128 0x12
+ 926 00e9 898201   		.uleb128 0x4109
+ 927 00ec 01       		.byte	0x1
+ 928 00ed 11       		.uleb128 0x11
+ 929 00ee 01       		.uleb128 0x1
+ 930 00ef 31       		.uleb128 0x31
+ 931 00f0 13       		.uleb128 0x13
+ 932 00f1 00       		.byte	0
+ 933 00f2 00       		.byte	0
+ 934 00f3 13       		.uleb128 0x13
+ 935 00f4 34       		.uleb128 0x34
+ 936 00f5 00       		.byte	0
+ 937 00f6 03       		.uleb128 0x3
+ 938 00f7 0E       		.uleb128 0xe
+ 939 00f8 3A       		.uleb128 0x3a
+ 940 00f9 0B       		.uleb128 0xb
+ 941 00fa 3B       		.uleb128 0x3b
+ 942 00fb 05       		.uleb128 0x5
+ 943 00fc 49       		.uleb128 0x49
+ 944 00fd 13       		.uleb128 0x13
+ 945 00fe 3F       		.uleb128 0x3f
+ 946 00ff 19       		.uleb128 0x19
+ 947 0100 3C       		.uleb128 0x3c
+ 948 0101 19       		.uleb128 0x19
+ 949 0102 00       		.byte	0
+ 950 0103 00       		.byte	0
+ 951 0104 14       		.uleb128 0x14
+ 952 0105 35       		.uleb128 0x35
+ 953 0106 00       		.byte	0
+ 954 0107 49       		.uleb128 0x49
+ 955 0108 13       		.uleb128 0x13
+ 956 0109 00       		.byte	0
+ 957 010a 00       		.byte	0
+ 958 010b 15       		.uleb128 0x15
+ 959 010c 34       		.uleb128 0x34
+ 960 010d 00       		.byte	0
+ 961 010e 03       		.uleb128 0x3
+ 962 010f 0E       		.uleb128 0xe
+ 963 0110 3A       		.uleb128 0x3a
+ 964 0111 0B       		.uleb128 0xb
+ 965 0112 3B       		.uleb128 0x3b
+ 966 0113 0B       		.uleb128 0xb
+ 967 0114 49       		.uleb128 0x49
+ 968 0115 13       		.uleb128 0x13
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 19
+
+
+ 969 0116 3F       		.uleb128 0x3f
+ 970 0117 19       		.uleb128 0x19
+ 971 0118 02       		.uleb128 0x2
+ 972 0119 18       		.uleb128 0x18
+ 973 011a 00       		.byte	0
+ 974 011b 00       		.byte	0
+ 975 011c 16       		.uleb128 0x16
+ 976 011d 2E       		.uleb128 0x2e
+ 977 011e 00       		.byte	0
+ 978 011f 3F       		.uleb128 0x3f
+ 979 0120 19       		.uleb128 0x19
+ 980 0121 3C       		.uleb128 0x3c
+ 981 0122 19       		.uleb128 0x19
+ 982 0123 6E       		.uleb128 0x6e
+ 983 0124 0E       		.uleb128 0xe
+ 984 0125 03       		.uleb128 0x3
+ 985 0126 0E       		.uleb128 0xe
+ 986 0127 3A       		.uleb128 0x3a
+ 987 0128 0B       		.uleb128 0xb
+ 988 0129 3B       		.uleb128 0x3b
+ 989 012a 0B       		.uleb128 0xb
+ 990 012b 00       		.byte	0
+ 991 012c 00       		.byte	0
+ 992 012d 00       		.byte	0
+ 993              		.section	.debug_loc,"",%progbits
+ 994              	.Ldebug_loc0:
+ 995              	.LLST0:
+ 996 0000 2C000000 		.4byte	.LVL4
+ 997 0004 30000000 		.4byte	.LVL5
+ 998 0008 0200     		.2byte	0x2
+ 999 000a 30       		.byte	0x30
+ 1000 000b 9F       		.byte	0x9f
+ 1001 000c 30000000 		.4byte	.LVL5
+ 1002 0010 70000000 		.4byte	.LVL16
+ 1003 0014 0100     		.2byte	0x1
+ 1004 0016 54       		.byte	0x54
+ 1005 0017 00000000 		.4byte	0
+ 1006 001b 00000000 		.4byte	0
+ 1007              	.LLST1:
+ 1008 001f 6E000000 		.4byte	.LVL15
+ 1009 0023 72000000 		.4byte	.LVL17
+ 1010 0027 0200     		.2byte	0x2
+ 1011 0029 30       		.byte	0x30
+ 1012 002a 9F       		.byte	0x9f
+ 1013 002b 72000000 		.4byte	.LVL17
+ 1014 002f 94000000 		.4byte	.LVL23
+ 1015 0033 0100     		.2byte	0x1
+ 1016 0035 54       		.byte	0x54
+ 1017 0036 00000000 		.4byte	0
+ 1018 003a 00000000 		.4byte	0
+ 1019              		.section	.debug_aranges,"",%progbits
+ 1020 0000 1C000000 		.4byte	0x1c
+ 1021 0004 0200     		.2byte	0x2
+ 1022 0006 00000000 		.4byte	.Ldebug_info0
+ 1023 000a 04       		.byte	0x4
+ 1024 000b 00       		.byte	0
+ 1025 000c 0000     		.2byte	0
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 20
+
+
+ 1026 000e 0000     		.2byte	0
+ 1027 0010 00000000 		.4byte	.LFB64
+ 1028 0014 C8000000 		.4byte	.LFE64-.LFB64
+ 1029 0018 00000000 		.4byte	0
+ 1030 001c 00000000 		.4byte	0
+ 1031              		.section	.debug_ranges,"",%progbits
+ 1032              	.Ldebug_ranges0:
+ 1033 0000 00000000 		.4byte	.LFB64
+ 1034 0004 C8000000 		.4byte	.LFE64
+ 1035 0008 00000000 		.4byte	0
+ 1036 000c 00000000 		.4byte	0
+ 1037              		.section	.debug_line,"",%progbits
+ 1038              	.Ldebug_line0:
+ 1039 0000 16020000 		.section	.debug_str,"MS",%progbits,1
+ 1039      0200CD01 
+ 1039      00000201 
+ 1039      FB0E0D00 
+ 1039      01010101 
+ 1040              	.LASF24:
+ 1041 0000 53595354 		.ascii	"SYSTICK\000"
+ 1041      49434B00 
+ 1042              	.LASF26:
+ 1043 0008 74726163 		.ascii	"tracerMode_t\000"
+ 1043      65724D6F 
+ 1043      64655F74 
+ 1043      00
+ 1044              	.LASF41:
+ 1045 0015 6D795469 		.ascii	"myTimer_print\000"
+ 1045      6D65725F 
+ 1045      7072696E 
+ 1045      7400
+ 1046              	.LASF28:
+ 1047 0023 6D5F6E61 		.ascii	"m_name\000"
+ 1047      6D6500
+ 1048              	.LASF29:
+ 1049 002a 63757272 		.ascii	"current_time\000"
+ 1049      656E745F 
+ 1049      74696D65 
+ 1049      00
+ 1050              	.LASF5:
+ 1051 0037 5F5F696E 		.ascii	"__int32_t\000"
+ 1051      7433325F 
+ 1051      7400
+ 1052              	.LASF42:
+ 1053 0041 6D795469 		.ascii	"myTimerReset\000"
+ 1053      6D657252 
+ 1053      65736574 
+ 1053      00
+ 1054              	.LASF40:
+ 1055 004e 6D795469 		.ascii	"myTimerStop\000"
+ 1055      6D657253 
+ 1055      746F7000 
+ 1056              	.LASF31:
+ 1057 005a 6D795472 		.ascii	"myTracer_t\000"
+ 1057      61636572 
+ 1057      5F7400
+ 1058              	.LASF39:
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 21
+
+
+ 1059 0065 6D795469 		.ascii	"myTimer_start\000"
+ 1059      6D65725F 
+ 1059      73746172 
+ 1059      7400
+ 1060              	.LASF20:
+ 1061 0073 50415553 		.ascii	"PAUSED\000"
+ 1061      454400
+ 1062              	.LASF21:
+ 1063 007a 52455345 		.ascii	"RESETTED\000"
+ 1063      54544544 
+ 1063      00
+ 1064              	.LASF11:
+ 1065 0083 696E7433 		.ascii	"int32_t\000"
+ 1065      325F7400 
+ 1066              	.LASF38:
+ 1067 008b 55415254 		.ascii	"UART_LOG_PutString\000"
+ 1067      5F4C4F47 
+ 1067      5F507574 
+ 1067      53747269 
+ 1067      6E6700
+ 1068              	.LASF23:
+ 1069 009e 74726163 		.ascii	"tracerStatus_t\000"
+ 1069      65725374 
+ 1069      61747573 
+ 1069      5F7400
+ 1070              	.LASF13:
+ 1071 00ad 666C6F61 		.ascii	"float\000"
+ 1071      7400
+ 1072              	.LASF1:
+ 1073 00b3 756E7369 		.ascii	"unsigned char\000"
+ 1073      676E6564 
+ 1073      20636861 
+ 1073      7200
+ 1074              	.LASF44:
+ 1075 00c1 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1075      43313120 
+ 1075      352E342E 
+ 1075      31203230 
+ 1075      31363036 
+ 1076 00f4 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1076      20726576 
+ 1076      6973696F 
+ 1076      6E203233 
+ 1076      37373135 
+ 1077 0127 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1077      66756E63 
+ 1077      74696F6E 
+ 1077      2D736563 
+ 1077      74696F6E 
+ 1078              	.LASF30:
+ 1079 014f 6D5F7374 		.ascii	"m_status\000"
+ 1079      61747573 
+ 1079      00
+ 1080              	.LASF33:
+ 1081 0158 6D795472 		.ascii	"myTracerObj2\000"
+ 1081      61636572 
+ 1081      4F626A32 
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 22
+
+
+ 1081      00
+ 1082              	.LASF7:
+ 1083 0165 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1083      20756E73 
+ 1083      69676E65 
+ 1083      6420696E 
+ 1083      7400
+ 1084              	.LASF3:
+ 1085 0177 73686F72 		.ascii	"short unsigned int\000"
+ 1085      7420756E 
+ 1085      7369676E 
+ 1085      65642069 
+ 1085      6E7400
+ 1086              	.LASF34:
+ 1087 018a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1087      52784275 
+ 1087      66666572 
+ 1087      00
+ 1088              	.LASF46:
+ 1089 0197 433A5C55 		.ascii	"C:\\Users\\schmi\\OneDrive\\Dokumente\\PSoC Creator"
+ 1089      73657273 
+ 1089      5C736368 
+ 1089      6D695C4F 
+ 1089      6E654472 
+ 1090 01c5 5C4C4142 		.ascii	"\\LAB1_AMA\\Design01.cydsn\000"
+ 1090      315F414D 
+ 1090      415C4465 
+ 1090      7369676E 
+ 1090      30312E63 
+ 1091              	.LASF14:
+ 1092 01de 646F7562 		.ascii	"double\000"
+ 1092      6C6500
+ 1093              	.LASF6:
+ 1094 01e5 5F5F7569 		.ascii	"__uint32_t\000"
+ 1094      6E743332 
+ 1094      5F7400
+ 1095              	.LASF22:
+ 1096 01f0 4445494E 		.ascii	"DEINITIALIZED\000"
+ 1096      49544941 
+ 1096      4C495A45 
+ 1096      4400
+ 1097              	.LASF37:
+ 1098 01fe 6D795469 		.ascii	"myTimer_init\000"
+ 1098      6D65725F 
+ 1098      696E6974 
+ 1098      00
+ 1099              	.LASF47:
+ 1100 020b 6D61696E 		.ascii	"main\000"
+ 1100      00
+ 1101              	.LASF10:
+ 1102 0210 756E7369 		.ascii	"unsigned int\000"
+ 1102      676E6564 
+ 1102      20696E74 
+ 1102      00
+ 1103              	.LASF19:
+ 1104 021d 494E4954 		.ascii	"INITIALIZED\000"
+ 1104      49414C49 
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 23
+
+
+ 1104      5A454400 
+ 1105              	.LASF9:
+ 1106 0229 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1106      206C6F6E 
+ 1106      6720756E 
+ 1106      7369676E 
+ 1106      65642069 
+ 1107              	.LASF35:
+ 1108 0240 63616C63 		.ascii	"calculations\000"
+ 1108      756C6174 
+ 1108      696F6E73 
+ 1108      00
+ 1109              	.LASF43:
+ 1110 024d 6D795469 		.ascii	"myTimerResume\000"
+ 1110      6D657252 
+ 1110      6573756D 
+ 1110      6500
+ 1111              	.LASF16:
+ 1112 025b 6C6F6E67 		.ascii	"long double\000"
+ 1112      20646F75 
+ 1112      626C6500 
+ 1113              	.LASF17:
+ 1114 0267 73697A65 		.ascii	"sizetype\000"
+ 1114      74797065 
+ 1114      00
+ 1115              	.LASF8:
+ 1116 0270 6C6F6E67 		.ascii	"long long int\000"
+ 1116      206C6F6E 
+ 1116      6720696E 
+ 1116      7400
+ 1117              	.LASF45:
+ 1118 027e 6D61696E 		.ascii	"main.c\000"
+ 1118      2E6300
+ 1119              	.LASF15:
+ 1120 0285 63686172 		.ascii	"char\000"
+ 1120      00
+ 1121              	.LASF2:
+ 1122 028a 73686F72 		.ascii	"short int\000"
+ 1122      7420696E 
+ 1122      7400
+ 1123              	.LASF32:
+ 1124 0294 6D795472 		.ascii	"myTracerObj1\000"
+ 1124      61636572 
+ 1124      4F626A31 
+ 1124      00
+ 1125              	.LASF12:
+ 1126 02a1 75696E74 		.ascii	"uint32_t\000"
+ 1126      33325F74 
+ 1126      00
+ 1127              	.LASF4:
+ 1128 02aa 6C6F6E67 		.ascii	"long int\000"
+ 1128      20696E74 
+ 1128      00
+ 1129              	.LASF25:
+ 1130 02b3 4D794461 		.ascii	"MyDataWatchPoint\000"
+ 1130      74615761 
+ 1130      74636850 
+ARM GAS  C:\Users\schmi\AppData\Local\Temp\cc9OcOEd.s 			page 24
+
+
+ 1130      6F696E74 
+ 1130      00
+ 1131              	.LASF18:
+ 1132 02c4 52554E4E 		.ascii	"RUNNING\000"
+ 1132      494E4700 
+ 1133              	.LASF0:
+ 1134 02cc 7369676E 		.ascii	"signed char\000"
+ 1134      65642063 
+ 1134      68617200 
+ 1135              	.LASF27:
+ 1136 02d8 6D5F6D6F 		.ascii	"m_mode\000"
+ 1136      646500
+ 1137              	.LASF36:
+ 1138 02df 73717274 		.ascii	"sqrt\000"
+ 1138      00
+ 1139              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
